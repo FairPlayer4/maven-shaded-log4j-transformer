@@ -9,36 +9,34 @@ You need add a new transformer to your transformers and add the plugin dependenc
 
 An example is below
 
-```
-<plugins>
-  <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-shade-plugin</artifactId>
-    <version>3.1.0</version>
-    <executions>
-      <execution>
-        <phase>package</phase>
-        <goals>
-          <goal>shade</goal>
-        </goals>
-        <configuration>
-          <transformers>
-            <transformer
-              implementation="com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer">
-            </transformer>
-          </transformers>
-        </configuration>
-      </execution>
-    </executions>
-    <dependencies>
-      <dependency>
-        <groupId>com.github.edwgiz</groupId>
-        <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
-        <version>2.11.0</version>
-      </dependency>
-    </dependencies>
-  </plugin>
-</plugins>
+```xml
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-shade-plugin</artifactId>
+  <version>3.1.0</version>
+  <executions>
+    <execution>
+      <phase>package</phase>
+      <goals>
+        <goal>shade</goal>
+      </goals>
+      <configuration>
+        <transformers>
+          <transformer
+            implementation="com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer">
+          </transformer>
+        </transformers>
+      </configuration>
+    </execution>
+  </executions>
+  <dependencies>
+    <dependency>
+      <groupId>com.github.edwgiz</groupId>
+      <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
+      <version>2.11.0</version>
+    </dependency>
+  </dependencies>
+</plugin>
 ```
 
 A number of the transformer version (it's 2.11.0 now) corresponds to the version of log4j2 (which is a dependency of this plugin)
